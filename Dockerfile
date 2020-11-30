@@ -1,4 +1,4 @@
-FROM jdecode/laravel-mysql:3
+FROM jdecode/laravel-mysql-nodejs:1
 
 COPY . .
 RUN rm -rf vendor

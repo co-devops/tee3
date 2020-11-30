@@ -15,8 +15,11 @@ services:
       - tee3_mysql
     depends_on:
       - tee3_mysql
+    env_file:
+      - .env
     environment:
       APP_DEBUG: 'true'
+      APP_ENV: 'local'
       APP_KEY: base64:joUD24iQhw/uWEWR002FPF/QJrmL2NuNj3JKS0v9Hvc=
       DATABASE_URL: mysql://devuser:devpass@123.12.3.2/tee3
     networks:
