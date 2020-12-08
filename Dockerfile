@@ -1,4 +1,9 @@
-FROM jdecode/laravel-mysql-nodejs:1
+FROM jdecode/p8-my-pg-nodejs:1
+
+#Make "public" the webroot, for Laravel
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 COPY . .
 RUN rm -rf vendor
